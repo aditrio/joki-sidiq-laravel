@@ -1,15 +1,19 @@
 $('.btn-edit').click(function () { 
     var $row = $(this).closest('tr');
     var $data_id = $row.find("td:nth-child(2)");
-    var $data_kelas = $row.find("td:nth-child(3)");
-    var $data_tanggal = $row.find("td:nth-child(4)");
+    var $data_judul = $row.find("td:nth-child(3)");
+    var $data_desc = $row.find("td:nth-child(4)");
+    var $data_file = $row.find("td:nth-child(5)");
+
     
      
     //console.log($data_id.text(), " ", $data_kelas.text(), " ", $data_tanggal.text());
 
-     $('#kelas-edit').attr('value', $data_kelas.text());
-     $('#tanggal-edit').attr('value', $data_tanggal.text());
-     $('#form-edit').attr('action' ,'/jadwal/'+$data_id.text()+'/update');
+     $('#judul-edit').attr('value', $data_judul.text());
+     $('#desc-edit').attr('value', $data_desc.text());
+     
+     $('#form-edit').attr('action' ,'/modul/'+$data_id.text()+'/update');
+    $('#nama-file').html($data_file.text());
      
 
  });
@@ -38,7 +42,7 @@ $('.btn-edit').click(function () {
 
      var $row = $(this).closest('tr');
      var $data_id = $row.find("td:nth-child(2)");
-     $('#form-delete').attr('action' ,'/jadwal/'+$data_id.text()+'/delete');
+     $('#form-delete').attr('action' ,'/modul/'+$data_id.text()+'/delete');
  });
 
 

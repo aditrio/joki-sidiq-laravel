@@ -35,19 +35,24 @@
                 </thead>
                 <tbody>
 
-                    {{-- @foreach ($data as $key => $item)
+                    @forelse($data as $key => $item)
                         <tr>
                             <td scope="row">{{$key + 1}}</td>
                             <td hidden>{{$item->id}}</td>
-                            <td>{{$item->kelas}}</td>
-                            <td>{{$item->tanggal}}</td>
-                            <td>{{count($item->testArray)}}</td>
+                            <td>{{$item->judul}}</td>
+                            <td>{{$item->desc}}</td>
+                            <td hidden>{{$item->file}}</td>
+                            <td><a href="../modul/{{$item->file}}" download="modul-{{$item->file}}" class="btn btn-danger btn-sm"><i class="fas fa-download    "></i> Download</a></td>
                             <td>
                                 <button class="btn btn-sm btn-info btn-edit" data-toggle="modal" data-target="#editmodal">Edit</button>
                                 <button class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#deletemodal">Hapus</button>
                             </td>
                         </tr>
-                    @endforeach --}}
+                        @empty
+                        
+                        <center class="text-danger">Tidak Ada Data</center>
+                        <br>
+                    @endforelse
                   
                   
                 </tbody>

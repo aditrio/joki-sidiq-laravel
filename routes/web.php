@@ -17,6 +17,9 @@ Route::get('/dash', 'PageController@index');
 Route::get('/dash/modul', 'PageController@modul');
 
 Route::post('/store/modul', 'ModulController@store')->name('store.modul');
+Route::put('/modul/{id}/update', 'ModulController@update')->name('update.modul');
+Route::delete('/modul/{id}/delete', 'ModulController@delete')->name('delete.modul');
+
 
 Auth::routes();
 

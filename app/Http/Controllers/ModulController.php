@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Modul;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File; 
 class ModulController extends Controller
 {
     /**
@@ -38,7 +38,7 @@ class ModulController extends Controller
         $file = $request->file('file');
 
         $file_name = time()."-".$file->getClientOriginalName();
-        $file_ext = $file->getClientOriginalExtension();
+        // $file_ext = $file->getClientOriginalExtension();
 
         $path = 'modul';
 
@@ -84,9 +84,36 @@ class ModulController extends Controller
      * @param  \App\Modul  $modul
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modul $modul)
+    public function update(Request $request, $id)
     {
-        //
+
+        $data = Modul::find($id);
+        $file = $request->file;
+        
+        if (!is_null($file)) {
+            
+            $file_name = time()."-".$file->getClientOriginalName();
+            $path = 'modul';
+            $file->move($path, $file_name);
+            
+            $data->update([
+                'judul' => $request->judul,
+                'desc' => $request->desc,
+                'file' => $file_name          
+            ]);
+
+        }else{
+
+            $data->update([
+                'judul' => $request->judul,
+                'desc' => $request->desc,
+            ]);
+
+        }
+
+        return redirect()->back();
+
+      
     }
 
     /**
@@ -98,5 +125,25 @@ class ModulController extends Controller
     public function destroy(Modul $modul)
     {
         //
+    }
+
+    public function delete($id)
+    {
+        
+        $data = Modul::find($id);
+       
+        if(\File::exists(public_path('modul/'.$data->file))){
+
+            \File::delete(public_path('modul/'.$data->file));
+        
+          }else{
+        
+            dd('File does not exists.');
+        
+          }
+        $data->delete();
+
+        return redirect()->back();
+
     }
 }

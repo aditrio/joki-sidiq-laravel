@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Modul;
 
 class PageController extends Controller
 {
@@ -15,6 +16,8 @@ class PageController extends Controller
     public function modul()
     {
 
-        return view('guru-modul');
+        $data = Modul::all();
+
+        return view('guru-modul', ['data' => $data]);
     }
 }

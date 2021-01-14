@@ -9,19 +9,26 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="" id="form-edit" method="POST">
+            <form action="" id="form-edit" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
-                  <label for="kelas-edit">Mata Pelajaran</label>
-                  <input type="text" class="form-control" id="kelas-edit"   name="kelas" placeholder="Mata Pelajaran">
+                  <label for="kelas-edit">Judul</label>
+                  <input type="text" required class="form-control" id="judul-edit"   name="judul" placeholder="Judul Modul">
                   
                 </div>
                 <div class="form-group">
-                  <label for="nim">Tanggal</label>
-                  <input type="date" name="tanggal" class="form-control" id="tanggal-edit"  placeholder="Tanggal">
+                  <label for="nim">Deskripsi</label>
+                  <input type="text" required name="desc" class="form-control" id="desc-edit"  placeholder="Deskripsi modul">
                 </div>
-                
+                <div class="form-group">
+                  <label for="nilai">File</label>
+                  <input type="file" name="file" class="form-control file-edit" placeholder="">
+                  {{-- <input type="text" hidden class="nilai-input" name="nilai" value=""> --}}
+                  <small class="text-info">kosong kan bila tidak ada perubahan file</small>
+                    <br>
+                  <small>file sebelumnya : <span id="nama-file"></span></small>
+                </div>
                 
               
         </div>
