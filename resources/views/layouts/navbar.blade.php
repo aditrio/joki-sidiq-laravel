@@ -22,7 +22,7 @@
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name"></h5>
-                            {{-- {{Auth::user()->name}} --}}
+                            {{Auth::user()->name}}
                             <span class="status"></span><span class="ml-2">Online</span>
                         </div>
                         

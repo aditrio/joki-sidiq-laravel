@@ -14,7 +14,7 @@
                         <a class="nav-link" href="/dash"><i class="fa fa-fw fa-user-circle mb-1"></i>Dashboard </a>
                         
                     </li>
-                  
+                  @if (Auth::user()->role == "guru")
                     <li class="nav-divider">
                         Data
                     </li>
@@ -23,6 +23,8 @@
                         <a class="nav-link" href="/dash/modul" ><i class="fas fa-fw fa-book mb-1"></i>Modul</a>
                         
                     </li>
+                  @endif
+                   
                   
                     
                 </ul>
